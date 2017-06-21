@@ -1,0 +1,32 @@
+{
+  "name": "its-miles",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "meteor-node-stubs": "~0.2.4"
+  },
+  "version": "1.0.0",
+  "description": "First attempt to add miles",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idealtec/its-miles.git"
+  },
+  "keywords": [
+    "miles",
+    "meteor",
+    "mongo",
+    "bootstrap",
+    "blaze"
+  ],
+  "author": "ITS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idealtec/its-miles/issues"
+  },
+  "homepage": "https://github.com/idealtec/its-miles#readme"
+}
