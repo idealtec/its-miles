@@ -23,13 +23,24 @@ Template.tmpl_main.helpers({
 
 Template.tmpl_main.events({
     'click .btnAdd'(event){
-       let miles = $('#miles').val();
+       let miles = parseInt($('#miles').val());
        let vin = $('#vin').val();
-        Miles.insert({
-            vin:vin,
-            miles: miles,
-            author: Meteor.userId()
-        });
+        // Miles.insert({
+        //     vin:vin,
+        //     miles: miles,
+        //     author: Meteor.userId()
+        // });
+        Meteor.call('addMiles',vin,miles,Meteor.userId(),function(err,res){
+            if(err){
+                console.log(err);
+                $('.alert-danger').show();
+            }else{
+                console.log(res)
+                $('.alert-success').show();
+                $('#vin').val();
+                $('#miles').val();
+            }
+        })
     }
 
 });
