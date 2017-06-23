@@ -1,46 +1,53 @@
 import Miles from '../../api/miles';
-import {Template} from 'meteor/templating';
-import {Meteor} from 'meteor/meteor';
-import {Session} from 'meteor/session';
+import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor';
+import { Session } from 'meteor/session';
 
 import './panel.html';
 
 
 Template.tmpl_main.helpers({
-    isLoggedIn(){
-        Session.set('user',Meteor.userId());
+    isLoggedIn() {
+        Session.set('user', Meteor.userId());
         return Meteor.user();
     },
-    allMiles(){
+    allMiles() {
         return Miles.find({
-            author:Meteor.userId()
+            author: Meteor.userId()
         });
     },
-    loggedUser(){
+    loggedUser() {
         return Session.get('user');
     }
 });
 
 Template.tmpl_main.events({
-    'click .btnAdd'(event){
-       let miles = parseInt($('#miles').val());
-       let vin = $('#vin').val();
+    'click .btnAdd'(event) {
+        $('.alert-success').hide();
+        $('.alert-danger').hide();
+
+        let miles = parseInt($('#miles').val());
+        let vin = $('#vin').val();
         // Miles.insert({
         //     vin:vin,
         //     miles: miles,
         //     author: Meteor.userId()
         // });
-        Meteor.call('addMiles',vin,miles,Meteor.userId(),function(err,res){
-            if(err){
+        Meteor.call('addMiles', vin, miles, Meteor.userId(), function (err, res) {
+            if (err) {
                 console.log(err);
                 $('.alert-danger').show();
-            }else{
+            } else {
                 console.log(res)
                 $('.alert-success').show();
-                $('#vin').val();
-                $('#miles').val();
+                $('#vin').val('');
+                $('#miles').val('');
             }
         })
+    },
+    'click #signup' (event){
+        console.log('clicked signup');
+        $('#myModal').show();
     }
 
 });

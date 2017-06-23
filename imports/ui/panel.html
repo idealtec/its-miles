@@ -1,76 +1,77 @@
 <template name='tmpl_main'>
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
 
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-                        <a class="navbar-brand" href="#">Miles</a>
+                            <a class="navbar-brand" href="#">Miles</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#"><span class="glyphicons glyphicons-list-numbered"></span> Table <span class="badge">5</span> </a></li>
+                                <li><a href="#"><span class="glyphicons glyphicons-stats"></span>Charts</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> {{> loginButtons}}</a></li>
+                                <li><a href="#" id='signup'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                            </ul>
+                        </div>
                     </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#"><span class="glyphicons glyphicons-list-numbered"></span> Table <span class="badge">5</span> </a></li>
-                            <li><a href="#"><span class="glyphicons glyphicons-stats"></span>Charts</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> {{> loginButtons}}</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-
-                        </ul>
+                </nav>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Vin</th>
+                            <th>Miles</th>
+                            <th>Author</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each allMiles}}
+                        <tr>
+                            <td>{{vin}}</td>
+                            <td>{{miles}}</td>
+                            <td>{{author}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{#if isLoggedIn}}
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon">Vin</span>
+                        <input id="vin" type="text" class="form-control" name="vin" placeholder="Enter Vin">
                     </div>
-                </div>
-            </nav>
-        </div>
-        <div class="panel-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Vin</th>
-                        <th>Miles</th>
-                        <th>Author</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each allMiles}}
-                    <tr>
-                        <td>{{vin}}</td>
-                        <td>{{miles}}</td>
-                        <td>{{author}}</td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            {{#if isLoggedIn}}
-            <form>
-                <div class="input-group">
-                    <span class="input-group-addon">Vin</span>
-                    <input id="vin" type="text" class="form-control" name="vin" placeholder="Enter Vin">
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon">Miles</span>
-                    <input id="miles" type="number" class="form-control" name="number" placeholder="Enter Miles">
-                </div>
-                <button type="button" class="btn btn-danger btnAdd">Add Record</button>
+                    <div class="input-group">
+                        <span class="input-group-addon">Miles</span>
+                        <input id="miles" type="number" class="form-control" name="number" placeholder="Enter Miles">
+                    </div>
+                    <button type="button" class="btn btn-danger btnAdd">Add Record</button>
 
 
-            </form>
-            {{/if}}
-        </div>
-        <div class="alert alert-success alert-dismissable fade in" style="display:none;">
-  <strong>Success!</strong> Added your information
-</div>
-        <div class="alert alert-danger alert-dismissable fade in" style="display:none;">
-  <strong>Oops!</strong> Please check your inputs
-</div>
+                </form>
+                {{/if}}
+            </div>
+            <div class="alert alert-success alert-dismissable fade in" style="display:none;">
+                <strong>Success!</strong> Added your information
+            </div>
+            <div class="alert alert-danger alert-dismissable fade in" style="display:none;">
+                <strong>Oops!</strong> Please check your inputs
+            </div>
 
-        <div class="panel-footer">
-            @&copy;
+            <div class="panel-footer">
+                @&copy;
+            </div>
         </div>
     </div>
-
 </template>
