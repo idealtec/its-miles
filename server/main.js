@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-  console.log('ITS started');
+  console.log('ITS-miles started ');
 });
